@@ -29,7 +29,7 @@ public class StudentController {
         this.studentService.save (student);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     public void update(@RequestBody Student student){
         this.studentService.save (student);
     }

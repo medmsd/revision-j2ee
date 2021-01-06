@@ -29,7 +29,7 @@ public class ProjectController {
         this.projectService.save (project);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     public void update(@RequestBody Project project){
         this.projectService.save (project);
     }

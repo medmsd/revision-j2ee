@@ -28,7 +28,7 @@ public class TeacherController {
         this.teacherService.save (teacher);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     public void update(@RequestBody Teacher teacher){
         this.teacherService.save (teacher);
     }

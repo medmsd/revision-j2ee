@@ -28,7 +28,7 @@ public class CompteController {
         this.compteService.save (compte);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping
     public void update(@RequestBody Compte compte){
         this.compteService.save (compte);
     }
