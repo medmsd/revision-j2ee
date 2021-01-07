@@ -5,6 +5,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+@NamedQueries (value = {
+        @NamedQuery (name = "allTeachers", query = "select t from Teacher t"),
+})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @NoArgsConstructor
 @AllArgsConstructor

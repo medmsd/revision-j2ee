@@ -25,12 +25,12 @@ public class CompteController {
 
     @PostMapping
     public void save(@RequestBody Compte compte) {
-        this.compteService.save (compte);
+        this.compteService.add (compte);
     }
 
     @PutMapping
     public void update(@RequestBody Compte compte){
-        this.compteService.save (compte);
+        this.compteService.update (compte);
     }
 
     @DeleteMapping("/{id}")

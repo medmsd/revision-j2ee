@@ -9,6 +9,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+@NamedQueries(value = {
+        @NamedQuery(name = "allProjects", query = "select p from Project p"),
+        @NamedQuery(name = "findProjectsByTeacherId", query = "select p from Project p where p.teacher.id=:id"),
+        @NamedQuery(name = "deleteProjectsByTeacherId", query = "delete from Project p where p.teacher.id=:id"),
+})
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,10 +31,13 @@ public class Project implements Serializable {
 
     private String name;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Teacher teacher;
 
-    @ManyToMany(mappedBy = "projects")
+    @ManyToMany(mappedBy = "projects", cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JsonIgnoreProperties(value = {"projects"})
     private List<Student> students = new ArrayList<> ();
 

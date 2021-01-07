@@ -26,12 +26,12 @@ public class StudentController {
 
     @PostMapping
     public void save(@RequestBody Student student) {
-        this.studentService.save (student);
+        this.studentService.add (student);
     }
 
     @PutMapping
     public void update(@RequestBody Student student){
-        this.studentService.save (student);
+        this.studentService.update (student);
     }
 
     @DeleteMapping("/{id}")

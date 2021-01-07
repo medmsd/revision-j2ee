@@ -25,12 +25,12 @@ public class TeacherController {
 
     @PostMapping
     public void save(@RequestBody Teacher teacher) {
-        this.teacherService.save (teacher);
+        this.teacherService.add (teacher);
     }
 
     @PutMapping
     public void update(@RequestBody Teacher teacher){
-        this.teacherService.save (teacher);
+        this.teacherService.update (teacher);
     }
 
     @DeleteMapping("/{id}")

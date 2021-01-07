@@ -5,6 +5,12 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+@NamedQueries (value = {
+        @NamedQuery (name = "allComptes", query = "select c from Compte c"),
+        @NamedQuery (name = "findComptesByTeacherId",query = "select c from Compte c where c.teacher.id=:id"),
+        @NamedQuery (name= "deleteCompteByTeacherId",query = "delete from Compte  c where c.teacher.id=:id"),
+})
+
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @NoArgsConstructor
 @AllArgsConstructor

@@ -26,12 +26,12 @@ public class ProjectController {
 
     @PostMapping
     public void save(@RequestBody Project project) {
-        this.projectService.save (project);
+        this.projectService.add (project);
     }
 
     @PutMapping
     public void update(@RequestBody Project project){
-        this.projectService.save (project);
+        this.projectService.update (project);
     }
 
     @DeleteMapping("/{id}")

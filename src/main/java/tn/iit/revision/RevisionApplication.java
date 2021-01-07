@@ -41,13 +41,13 @@ public class RevisionApplication implements CommandLineRunner {
         kess.addProject (j2ee);
         tayeb.addProject (dataScience);
         triki.addProject (dataScience);
-        this.teacherService.save (mseddi);
-        this.teacherService.save (louati);
-        this.projectService.save (j2ee);
-        this.projectService.save (dataScience);
-        this.compteService.save (compte);
-        this.studentService.save (kess);
-        this.studentService.save (tayeb);
-        this.studentService.save (triki);
+        this.teacherService.add (mseddi);
+        this.teacherService.add (louati);
+        this.projectService.add (j2ee);
+        this.projectService.add (dataScience);
+        this.compteService.add (compte);
+        this.studentService.add (kess);
+        this.studentService.add (tayeb);
+        this.studentService.add (triki);
     }
 }
