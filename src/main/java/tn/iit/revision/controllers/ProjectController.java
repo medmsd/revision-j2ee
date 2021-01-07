@@ -2,7 +2,7 @@ package tn.iit.revision.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.iit.revision.models.Project;
+import tn.iit.revision.dto.ProjectDto;
 import tn.iit.revision.services.ProjectService;
 
 import javax.websocket.server.PathParam;
@@ -15,23 +15,23 @@ public class ProjectController {
     private ProjectService projectService;
 
     @GetMapping
-    public List<Project> findAll(){
+    public List<ProjectDto> findAll(){
         return this.projectService.findAll ();
     }
 
     @GetMapping("/{id}")
-    public Project find(@PathVariable ("id") long id){
+    public ProjectDto find(@PathVariable ("id") long id){
         return this.projectService.find (id);
     }
 
     @PostMapping
-    public void save(@RequestBody Project project) {
-        this.projectService.save (project);
+    public void save(@RequestBody ProjectDto projectDto) {
+        this.projectService.save (projectDto);
     }
 
     @PutMapping
-    public void update(@RequestBody Project project){
-        this.projectService.save (project);
+    public void update(@RequestBody ProjectDto projectDto){
+        this.projectService.save (projectDto);
     }
 
     @DeleteMapping("/{id}")

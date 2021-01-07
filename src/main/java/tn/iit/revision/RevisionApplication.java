@@ -4,10 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import tn.iit.revision.models.Compte;
-import tn.iit.revision.models.Project;
-import tn.iit.revision.models.Student;
-import tn.iit.revision.models.Teacher;
 import tn.iit.revision.services.CompteService;
 import tn.iit.revision.services.ProjectService;
 import tn.iit.revision.services.StudentService;
@@ -30,24 +26,24 @@ public class RevisionApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Student kess = new Student ("Mohamed", "Amine Kessentini");
-        Student tayeb = new Student ("Tayeb","Karaa");
-        Student triki = new Student ("Houssem", "Triki");
-        Teacher  mseddi = new Teacher ("Mohamed", "Mseddi");
-        Teacher louati = new Teacher ("Mahdi", "Louati");
-        Project j2ee = new Project ("J2EE", mseddi);
-        Project dataScience = new Project ("Covid", louati);
-        Compte compte = new Compte (1000, mseddi);
-        kess.addProject (j2ee);
-        tayeb.addProject (dataScience);
-        triki.addProject (dataScience);
-        this.teacherService.save (mseddi);
-        this.teacherService.save (louati);
-        this.projectService.save (j2ee);
-        this.projectService.save (dataScience);
-        this.compteService.save (compte);
-        this.studentService.save (kess);
-        this.studentService.save (tayeb);
-        this.studentService.save (triki);
+//        StudentDto kess = new StudentDto ("Mohamed", "Amine Kessentini");
+//        StudentDto tayeb = new StudentDto ("Tayeb","Karaa");
+//        StudentDto triki = new StudentDto ("Houssem", "Triki");
+//        TeacherDto mseddi = new TeacherDto ("Mohamed", "Mseddi");
+//        TeacherDto louati = new TeacherDto ("Mahdi", "Louati");
+//        ProjectDto j2ee = new ProjectDto ("J2EE", mseddi);
+//        ProjectDto dataScience = new ProjectDto ("Covid", louati);
+//        CompteDto compte = new CompteDto (1000, mseddi);
+//        kess.getProjects().add (j2ee);
+//        tayeb.getProjects().add (dataScience);
+//        triki.getProjects().add(dataScience);
+//        this.teacherService.save (mseddi);
+//        this.teacherService.save (louati);
+//        this.projectService.save (j2ee);
+//        this.projectService.save (dataScience);
+//        this.compteService.save (compte);
+//        this.studentService.save (kess);
+//        this.studentService.save (tayeb);
+//        this.studentService.save (triki);
     }
 }

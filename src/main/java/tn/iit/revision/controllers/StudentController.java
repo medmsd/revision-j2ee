@@ -2,6 +2,7 @@ package tn.iit.revision.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.iit.revision.dto.StudentDto;
 import tn.iit.revision.models.Student;
 import tn.iit.revision.services.StudentService;
 
@@ -15,23 +16,23 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping
-    public List<Student> findAll(){
+    public List<StudentDto> findAll(){
         return this.studentService.findAll ();
     }
 
     @GetMapping("/{id}")
-    public Student find(@PathVariable ("id") long id){
+    public StudentDto find(@PathVariable ("id") long id){
         return this.studentService.find (id);
     }
 
     @PostMapping
-    public void save(@RequestBody Student student) {
-        this.studentService.save (student);
+    public void save(@RequestBody StudentDto studentDto) {
+        this.studentService.save (studentDto);
     }
 
     @PutMapping
-    public void update(@RequestBody Student student){
-        this.studentService.save (student);
+    public void update(@RequestBody StudentDto studentDto){
+        this.studentService.save (studentDto);
     }
 
     @DeleteMapping("/{id}")

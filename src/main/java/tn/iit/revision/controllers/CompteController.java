@@ -2,6 +2,7 @@ package tn.iit.revision.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import tn.iit.revision.dto.CompteDto;
 import tn.iit.revision.models.Compte;
 import tn.iit.revision.services.CompteService;
 
@@ -14,23 +15,23 @@ public class CompteController {
     private CompteService compteService;
 
     @GetMapping
-    public List<Compte> findAll(){
+    public List<CompteDto> findAll(){
         return this.compteService.findAll ();
     }
 
     @GetMapping("/{id}")
-    public Compte find(@PathVariable ("id") long id){
+    public CompteDto find(@PathVariable ("id") long id){
         return this.compteService.find (id);
     }
 
     @PostMapping
-    public void save(@RequestBody Compte compte) {
-        this.compteService.save (compte);
+    public void save(@RequestBody CompteDto compteDto) {
+        this.compteService.save (compteDto);
     }
 
     @PutMapping
-    public void update(@RequestBody Compte compte){
-        this.compteService.save (compte);
+    public void update(@RequestBody CompteDto compteDto){
+        this.compteService.save (compteDto);
     }
 
     @DeleteMapping("/{id}")

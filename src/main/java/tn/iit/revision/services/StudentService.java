@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tn.iit.revision.dao.StudentDao;
+import tn.iit.revision.dto.StudentDto;
+import tn.iit.revision.mapper.StudentMapper;
 import tn.iit.revision.models.Student;
 
 import java.util.List;
@@ -12,16 +14,16 @@ import java.util.List;
 public class StudentService {
     @Autowired
     private StudentDao studentDao;
-
-    public void save(Student student){
-        studentDao.save (student);
+    @Transactional
+    public void save(StudentDto studentDto){
+        studentDao.saveAndFlush (StudentMapper.studentDtoToStudent (studentDto));
     }
 
-    public Student find(Long id){
-        return this.studentDao.getOne (id);
+    public StudentDto find(Long id){
+        return StudentMapper.studentToStudentDto (this.studentDao.getOne (id));
     }
-    public List<Student> findAll(){
-        return this.studentDao.findAll ();
+    public List<StudentDto> findAll(){
+        return StudentMapper.studentsToStudentDtos (this.studentDao.findAll ());
     }
     public void delete(Long id){
         this.studentDao.deleteById (id);

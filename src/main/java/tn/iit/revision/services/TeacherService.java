@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import tn.iit.revision.dao.CompteDao;
 import tn.iit.revision.dao.ProjectDao;
 import tn.iit.revision.dao.TeacherDao;
+import tn.iit.revision.dto.TeacherDto;
+import tn.iit.revision.mapper.TeacherMapper;
 import tn.iit.revision.models.Teacher;
 
 import java.util.List;
@@ -20,18 +22,20 @@ public class TeacherService {
     private ProjectDao projectDao;
 
     @Transactional
-    public void save(Teacher teacher){
-        teacherDao.save (teacher);
+    public void save(TeacherDto teacherDto) {
+        teacherDao.saveAndFlush (TeacherMapper.teacherDtoToTeacher (teacherDto));
     }
 
-    public Teacher find(long id){
-        return this.teacherDao.getOne (id);
+    public TeacherDto find(long id) {
+        return TeacherMapper.teacherToTeacherDto (this.teacherDao.getOne (id));
     }
-    public List<Teacher> findAll(){
-        return this.teacherDao.findAll ();
+
+    public List<TeacherDto> findAll() {
+        return TeacherMapper.teachersToTeacherDtos (this.teacherDao.findAll ());
     }
+
     @Transactional
-    public void delete(long id){
+    public void delete(long id) {
         this.compteDao.deleteComptesByTeacherId (id);
         this.projectDao.deleteProjectsByTeacherId (id);
         this.teacherDao.deleteById (id);

@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tn.iit.revision.dao.CompteDao;
+import tn.iit.revision.dto.CompteDto;
+import tn.iit.revision.mapper.CompteMapper;
 import tn.iit.revision.models.Compte;
 
 import java.util.List;
@@ -12,22 +14,25 @@ import java.util.List;
 public class CompteService {
     @Autowired
     private CompteDao compteDao;
-
-    public void save(Compte compte){
-        compteDao.save (compte);
+    @Transactional
+    public void save(CompteDto compteDto) {
+        compteDao.saveAndFlush (CompteMapper.compteDtoToCompte (compteDto));
     }
 
-    public Compte find(Long id){
-        return this.compteDao.getOne (id);
+    public CompteDto find(Long id) {
+        return CompteMapper.compteToCompteDto (this.compteDao.getOne (id));
     }
-    public List<Compte> findAll(){
-        return this.compteDao.findAll ();
+
+    public List<CompteDto> findAll() {
+        return CompteMapper.comptesToCompteDtos (this.compteDao.findAll ());
     }
-    public void delete(Long id){
+
+    public void delete(Long id) {
         this.compteDao.deleteById (id);
     }
-    public Compte findByTeacherId(Long teacherId){
-        return this.compteDao.findCompteByTeacherId (teacherId);
+
+    public CompteDto findByTeacherId(Long teacherId) {
+        return CompteMapper.compteToCompteDto (this.compteDao.findCompteByTeacherId (teacherId));
     }
 
 }

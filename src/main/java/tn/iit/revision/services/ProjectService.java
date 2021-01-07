@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tn.iit.revision.dao.ProjectDao;
+import tn.iit.revision.dto.ProjectDto;
+import tn.iit.revision.mapper.ProjectMapper;
 import tn.iit.revision.models.Project;
 
 import java.util.List;
@@ -12,21 +14,24 @@ import java.util.List;
 public class ProjectService {
     @Autowired
     private ProjectDao projectDao;
-
-    public void save(Project project){
-        projectDao.save (project);
+    @Transactional
+    public void save(ProjectDto projectDto) {
+        projectDao.saveAndFlush (ProjectMapper.projectDtoToProject (projectDto));
     }
 
-    public Project find(Long id){
-        return this.projectDao.getOne (id);
+    public ProjectDto find(Long id) {
+        return ProjectMapper.projectToProjectDto (this.projectDao.getOne (id));
     }
-    public List<Project> findAll(){
-        return this.projectDao.findAll ();
+
+    public List<ProjectDto> findAll() {
+        return ProjectMapper.projectsToProjectDtos (this.projectDao.findAll ());
     }
-    public void delete(Long id){
+
+    public void delete(Long id) {
         this.projectDao.deleteById (id);
     }
-    public List<Project> findProjectsByTeacherId(Long teacherId){
-        return this.projectDao.findProjectsByTeacherId (teacherId);
+
+    public List<ProjectDto> findProjectsByTeacherId(Long teacherId) {
+        return ProjectMapper.projectsToProjectDtos (this.projectDao.findProjectsByTeacherId (teacherId));
     }
 }
