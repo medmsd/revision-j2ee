@@ -27,7 +27,7 @@ public class Student implements Serializable {
     private String firstName;
     private String lastName;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "t_projects_students",
             joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns =@JoinColumn(name = "project_id") )

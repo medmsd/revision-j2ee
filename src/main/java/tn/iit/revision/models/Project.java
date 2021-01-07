@@ -31,13 +31,10 @@ public class Project implements Serializable {
 
     private String name;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Teacher teacher;
 
-    @ManyToMany(mappedBy = "projects", cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
+    @ManyToMany(mappedBy = "projects", cascade = CascadeType.MERGE)
     @JsonIgnoreProperties(value = {"projects"})
     private List<Student> students = new ArrayList<> ();
 
