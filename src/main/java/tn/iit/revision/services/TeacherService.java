@@ -22,13 +22,14 @@ public class TeacherService implements ITeacherDao {
 
     @Override
     public void add(Teacher teacher) {
-
+        this.teacherDao.add (teacher);
     }
 
     @Override
     public void update(Teacher teacher) {
-
+        this.teacherDao.update (teacher);
     }
+
     @Transactional
     @Override
     public void delete(Long id) {
